@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffe Shop Savage</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- App -->
+    <script src="src.js"></script>
+  </head>
+
+  <body>
+    <!-- Navbar start -->
+    <nav class="navbar" x-data>
+      <a href="#" class="navbar-logo">Coffe Shop<span> Savage</span></a>
+
+      <div class="navbar-nav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">Tentang Kami</a>
+        <a href="index.html#menu">Menu</a>
+        <a href="index.html#products">Produk</a>
+        <a href="index.html#contact">Kontak</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="#" id="shopping-cart-button">
+          <i data-feather="shopping-cart"></i>
+          <span
+            class="quantity-badge"
+            x-show="$store.cart.quantity"
+            x-text="$store.cart.quantity"
+          ></span>
+        </a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+
+      <!-- Search Form start -->
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here..." />
+        <label for="search-box"><i data-feather="search"></i></label>
+      </div>
+      <!-- Search Form end -->
+
+      <!-- Shopping Cart start -->
+      <div class="shopping-cart">
+        <template x-for="(item, index) in $store.cart.items" x-key="index">
+          <div class="cart-item">
+            <img :src="`img/product/${item.img}`" :alt="item.name" />
+            <div class="item-detail">
+              <h3 x-text="item.name"></h3>
+              <div class="item-price">
+                <span x-text="Rupiah(item.price)"></span> &times;
+                <button id="remove" @click="$store.cart.remove(item.id)">
+                  &minus;
+                </button>
+                <span x-text="item.quantity"></span>
+                <button id="add" @click="$store.cart.add(item)">&plus;</button>
+                &equals;
+                <span x-text="Rupiah(item.total)"></span>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+      <!-- Shopping Cart end -->
+    </nav>
+    <!-- Navbar end -->
+    <section class="products" id="products" >
+        <h2><span>Menu</span> Kami</h2>
+        <p>
+            "Nikmati kehangatan dan aroma kopi yang kaya dengan pilihan kopi kami, diseduh dengan sempurna untuk memberikan pengalaman kopi yang memikat."</p>
+  
+        <div class="row">
+         
+            <div class="product-card">
+              <h3>Americano</h3>
+              <div class="product-image">
+                <img src="img/product/coffe1.jpeg" />
+              </div>
+              <div class="product-content">
+                <h3>Americano</h3>
+                <p>Americano adalah minuman kopi yang terbuat dari campuran espresso dan air panas. Minuman ini memiliki rasa yang lebih ringan dibanding espresso murni karena ditambahkan air.  Nama "Americano" diyakini berasal dari kebiasaan para tentara Amerika Selatan pada Perang Dunia II yang menambahkan air ke espresso untuk menciptakan minuman kopi yang mirip dengan kopi yang mereka nikmati di Amerika.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <h3>Cappucino</h3>
+                <div class="product-image">
+                  <img src="img/product/coffe2.jpeg" />
+                </div>
+                <div class="product-content">
+                  <h3>Cappucino</h3>
+                  <p>
+                      Cappuccino adalah jenis minuman kopi yang terdiri dari espresso, susu panas, dan busa susu. Rasio antara espresso, susu panas, dan busa susu biasanya adalah 1:1:1, meskipun dapat bervariasi tergantung pada preferensi individu.Minuman ini merupakan pilihan populer di berbagai kafe dan dikenal karena rasa yang seimbang dan teksturnya yang kaya. </p>
+                  </div>
+              </div>
+              <div class="product-card">
+                <h3>Latte</h3>
+                <div class="product-image">
+                  <img src="img/product/coffe3.jpg" />
+                </div>
+                <div class="product-content">
+                  <h3>Latte</h3>
+                  <p>Latte, atau disebut juga caffe latte, adalah minuman kopi yang terdiri dari espresso dan susu steamed (dipanaskan dan diuapkan). Rasio espresso dan susu dalam latte biasanya berkisar antara 1:2 hingga 1:3, tergantung pada selera pribadi. Latte memiliki rasa kopi yang lebih lembut dibandingkan dengan espresso murni, karena susu steamed memberikan kelembutan dan kekentalan pada minuman.</p>
+                  </div>
+              </div>
+              <div class="product-card">
+                <h3>Robusta</h3>
+                <div class="product-image">
+                  <img src="img/product/robusta.jpeg" />
+                </div>
+                <div class="product-content">
+                  <h3>Robusta</h3>
+                  <p>Biji kopi robusta adalah salah satu varietas utama dari tanaman kopi yang berasal dari spesies Coffea canephora.Berbeda dengan biji kopi arabika, biji kopi robusta memiliki karakteristik yang berbeda baik dari segi rasa maupun pertumbuhannya. seperti rasa pahit yang kuat, kekentalan yang tinggi dan rasa asam yang tidak begitu kuat</p>
+                  </div>
+              </div>
+              <div class="product-card">
+                <h3>Gayo Coffee</h3>
+                <div class="product-image">
+                  <img src="img/product/gayo.jpeg" />
+                </div>
+                <div class="product-content">
+                  <h3>Gayo Coffee</h3>
+                  <p>Biji kopi Gayo adalah kopi yang berasal dari daerah Gayo di provinsi Aceh, Indonesia. Kopi Gayo terkenal dengan karakteristik rasa yang khas, yang mencakup keseimbangan antara keasaman yang ringan, tubuh yang penuh, dan kekentalan yang memadai. Kopi Gayo, dengan kualitasnya yang tinggi, telah mendapatkan pengakuan di pasar kopi global dan menjadi salah satu produk unggulan dari Indonesia.</p>
+                  </div>
+              </div>
+              <div class="product-card">
+                <h3>Arabica</h3>
+                <div class="product-image">
+                  <img src="img/product/arabica.jpg" />
+                </div>
+                <div class="product-content">
+                  <h3>Arabica</h3>
+                  <p>Kopi Arabika adalah varietas kopi yang sangat dihargai dan populer di seluruh dunia. Diperoleh dari tanaman kopi Arabica, biji kopi ini tumbuh di ketinggian yang lebih tinggi dibandingkan dengan varietas kopi Robusta. Kopi Arabika dikenal karena rasa yang kompleks dan beragam, mencakup keasaman yang menyegarkan, kekentalan yang moderat, dan sentuhan buah-buahan serta bunga.</p>
+                  </div>
+              </div>
+              <div class="detail-button">
+                <a href="index.html#product" >Order Now</a>
+              </div>
+            </div>
+        </section>
+            <!-- Footer start -->
+    <footer>
+        <div class="socials">
+          <a href="#"><i data-feather="instagram"></i></a>
+          <a href="#"><i data-feather="twitter"></i></a>
+          <a href="#"><i data-feather="facebook"></i></a>
+        </div>
+  
+        <div class="links">
+          <a href="#home">Home</a>
+          <a href="#about">Tentang Kami</a>
+          <a href="#menu">Menu</a>
+          <a href="#contact">Kontak</a>
+        </div>
+  
+        <div class="credit">
+          <p>Created by <a href="">aqiel-bintang-iqbal</a>. | &copy; 2024.</p>
+        </div>
+      </footer>
+      <!-- Footer end -->
+    <!-- Feather Icons -->
+    <script>
+        feather.replace();
+      </script>
+  
+      <!-- My Javascript -->
+      <script src="index.js"></script>
+  </body>
+</html>
